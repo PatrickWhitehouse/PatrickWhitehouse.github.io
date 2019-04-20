@@ -1,8 +1,9 @@
-var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const sass = require('gulp-sass');
+const purify = require('gulp-purifycss');
+const sourcemaps = require('gulp-sourcemaps');
+const browserSync = require('browser-sync').create();
 
 
 /* Default task 
