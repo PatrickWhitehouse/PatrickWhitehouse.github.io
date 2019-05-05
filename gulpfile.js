@@ -1,4 +1,4 @@
-const gulp = require('gulp');
+const {src, dest, series, watch} = require('gulp');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
@@ -14,38 +14,38 @@ const browserSync = require('browser-sync').create();
 
 */
 
-gulp.task('default', ['browser-sync']);
+
 
 /* Convert sass to css */
 
-gulp.task('sass', function () {
-    return gulp.src('./scss/**/*.scss')
-      .pipe(plumber())
-      .pipe(sourcemaps.init())
-      .pipe(sass().on('error', sass.logError))
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest('./css'))
-      .pipe(browserSync.stream());
-  });
+function convert(done){
+    return src('./scss/**/*.scss')
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(sourcemaps.write())
+        .pipe(dest('./css'))
+        .pipe(browserSync.stream());
+    done();
+}
 
 
-/* browserSync */
+/* Browser Sync */
 
-gulp.task('browser-sync', function() {
+function liveReload(done){
     browserSync.init({
         server: {
             baseDir: "./"
         }
     });
 
-    gulp.watch("./**/*.html").on('change', browserSync.reload);
-    gulp.watch("scss/**/*.scss", ['sass']);
-});
+    watch("./**/*.html").on('change', browserSync.reload);
+    watch("scss/**/*.scss", convert);
+    done();
+}
 
-
-/* Minify CSS */
-gulp.task('minify-css', function() {
-    return gulp.src('css/*.css')
+function minify(done){
+    return src('css/*.css')
         .pipe(cleanCSS({
             compatibility: '*',
             level: '1'
@@ -53,5 +53,15 @@ gulp.task('minify-css', function() {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./css'));
-});
+        .pipe(dest('./css'));
+    done();
+}
+
+
+/* Exports */
+exports.convert = convert;
+exports.liveReload = liveReload;
+exports.minify = minify;
+
+/* Default task */
+exports.default = liveReload;
