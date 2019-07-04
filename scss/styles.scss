@@ -1,13 +1,21 @@
 @import 'reset';
 @import 'variables';
 
+*{
+    box-sizing: border-box;
+}
+
 body{
     font-family: 'Inter', sans-serif;
     background-color: $d-blue;
     color: $off-white;
-    font-size: 16px;
+    font-size: $base;
     line-height: 1.5;
     font-weight: 400;
+    padding: 0 $base;
+    @media screen and (min-width: $s-medium){
+        padding: 0 $fs-large;
+    }
 }
 
 @supports (font-variation-settings: normal) {
@@ -17,7 +25,32 @@ body{
 }
 
 img{
-    width: 100%;
     max-width: 100%;
 }
 
+.wrapper{
+    width: 90%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid{
+    display: grid;
+
+    &-intro {
+        text-align: center;
+        align-items: center;
+        grid-gap: $base;
+        height: 100vh;
+        padding: $base 0;
+        @media screen and (min-width: $s-medium) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        &__image{
+            img{
+                max-height: 500px;
+            }
+        }
+    }
+}

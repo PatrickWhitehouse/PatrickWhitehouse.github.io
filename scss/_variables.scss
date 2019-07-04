@@ -9,6 +9,12 @@ $l-blue: #7689F3;
 $off-white: #F8F8FF;
 $white: white;
 
+/* Breakpoints */
+
+$s-small: 360px;
+$s-medium: 768px;
+$s-large: 1280px;
+
 
 /* Font Sizes */
 $base: 16px;
@@ -16,24 +22,24 @@ $fs-medium: ceil($base * 1.56);
 $fs-large: ceil($base * 2.441);
 $fs-xlarge: ceil($base * 3.052);
 
-h1{
-    font-size: $fs-xlarge;
-}
+@media screen and (min-width: $s-medium){
+    h1 {
+        font-size: $fs-xlarge;
+    }
 
-h2{
-    font-size: $fs-large;
-}
+    h2 {
+        font-size: $fs-large;
+    }
 
-h3{
-    font-size: $fs-medium;
+    h3 {
+        font-size: $fs-medium;
+    }
 }
 
 h1,h2,h3,h4,h5,h6{
     font-weight: 500;
+    background: linear-gradient(to right, $l-blue, $off-white 45%);
+    color: $off-white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-
-/* Breakpoints */
-
-$s-small: 360px;
-$s-medium: 768px;
-$s-large: 1280px;
