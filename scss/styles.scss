@@ -1,52 +1,23 @@
 @import 'reset';
 @import 'variables';
 
-html, *, *:after{
-    box-sizing: border-box;
-}
 body{
-    font-family: $font;
+    font-family: 'Inter', sans-serif;
+    background-color: $d-blue;
+    color: $off-white;
+    font-size: 16px;
+    line-height: 1.5;
     font-weight: 400;
-    line-height: 1.6;
-    background-color: $spring;
-    color: $purple;
+}
+
+@supports (font-variation-settings: normal) {
+    html {
+        font-family: 'Inter var', sans-serif;
+    }
 }
 
 img{
+    width: 100%;
     max-width: 100%;
-    height: auto;
 }
 
-.wrapper{
-    max-width: 960px;
-    margin: 0 auto;
-    padding: $spacer2;
-    &:after{
-        display: table;
-        content: "";
-        clear: both;
-    }
-
-}
-
-.float-50{
-    float: left;
-    width: 50%;
-    padding: $spacer1;
-
-    &:after{
-        display: table;
-        content: "";
-        clear: both;
-    }
-}
-
-/* Intro section */
-
-section.intro{
-    text-align: center;
-    img{
-        max-width: 400px;
-        width: 100%;
-    }
-}
