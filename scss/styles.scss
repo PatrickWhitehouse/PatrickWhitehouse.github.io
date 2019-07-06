@@ -1,11 +1,11 @@
 @import 'reset';
 @import 'variables';
 
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Inter', sans-serif;
     background-color: $d-blue;
     color: $off-white;
@@ -14,7 +14,8 @@ body{
     font-weight: 400;
     padding: ($base/2) $base;
     border: $base solid $blue;
-    @media screen and (min-width: $s-medium){
+
+    @media screen and (min-width: $s-medium) {
         padding: ($fs-large/2) $fs-large;
     }
 }
@@ -25,35 +26,36 @@ body{
     }
 }
 
-p{
+p {
     line-height: 2;
 }
 
-img{
+img {
     max-width: 100%;
 }
 
-.wrapper{
+.wrapper {
     width: 90%;
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
 }
 
-.grid{
+.grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
     @media screen and (min-width: $s-medium) {
         grid-template-columns: repeat(8, 1fr);
     }
 
-    &--default{
-        > .grid__content.grid__content--full{
+    &--default {
+        >.grid__content.grid__content--full {
             grid-column: 1/-1;
         }
 
         >.grid__content.grid__work--image,
-        >.grid__content.grid__work--info{
+        >.grid__content.grid__work--info {
             grid-column: 1/-1;
         }
 
@@ -66,7 +68,7 @@ img{
                 grid-column: 6/span 3;
             }
         }
-        
+
     }
 
     &--intro {
@@ -74,15 +76,20 @@ img{
         align-items: center;
         grid-gap: $base;
         padding: $base 0;
-        &__image{
-            img{
+
+        &__image {
+            img {
                 max-height: 500px;
             }
         }
-        &__text, &__image{
+
+        &__text,
+        &__image {
             grid-column: 1/-1;
         }
+
         @media screen and (min-width: $s-medium) {
+
             &__text,
             &__image {
                 grid-column: span 4;
