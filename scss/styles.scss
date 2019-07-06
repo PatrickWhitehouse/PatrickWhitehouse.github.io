@@ -60,12 +60,17 @@ img {
         }
 
         @media screen and (min-width: $s-medium) {
-            >.grid__content.grid__work--image {
+            >.grid__content.grid__work--image,
+            >.grid__content.grid__work--info {
                 grid-column: span 4;
+                margin-top: $base;
             }
 
             >.grid__content.grid__work--info {
-                grid-column: 6/span 3;
+                padding-left: ($base*2);
+                h3{
+                    margin-top: 0;
+                }
             }
         }
 
