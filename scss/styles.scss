@@ -12,9 +12,10 @@ body{
     font-size: $base;
     line-height: 1.5;
     font-weight: 400;
-    padding: 0 $base;
+    padding: ($base/2) $base;
+    border: $base solid $blue;
     @media screen and (min-width: $s-medium){
-        padding: 0 $fs-large;
+        padding: ($fs-large/2) $fs-large;
     }
 }
 
@@ -22,6 +23,10 @@ body{
     html {
         font-family: 'Inter var', sans-serif;
     }
+}
+
+p{
+    line-height: 2;
 }
 
 img{
@@ -37,19 +42,50 @@ img{
 
 .grid{
     display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    @media screen and (min-width: $s-medium) {
+        grid-template-columns: repeat(8, 1fr);
+    }
 
-    &-intro {
+    &--default{
+        > .grid__content.grid__content--full{
+            grid-column: 1/-1;
+        }
+
+        >.grid__content.grid__work--image,
+        >.grid__content.grid__work--info{
+            grid-column: 1/-1;
+        }
+
+        @media screen and (min-width: $s-medium) {
+            >.grid__content.grid__work--image {
+                grid-column: span 4;
+            }
+
+            >.grid__content.grid__work--info {
+                grid-column: 6/span 3;
+            }
+        }
+        
+    }
+
+    &--intro {
         text-align: center;
         align-items: center;
         grid-gap: $base;
-        height: 100vh;
         padding: $base 0;
-        @media screen and (min-width: $s-medium) {
-            grid-template-columns: repeat(2, 1fr);
-        }
         &__image{
             img{
                 max-height: 500px;
+            }
+        }
+        &__text, &__image{
+            grid-column: 1/-1;
+        }
+        @media screen and (min-width: $s-medium) {
+            &__text,
+            &__image {
+                grid-column: span 4;
             }
         }
     }
