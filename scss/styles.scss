@@ -13,10 +13,10 @@ body {
     line-height: 1.5;
     font-weight: 400;
     padding: ($base/2) $base;
-    border: $base solid $blue;
 
     @media screen and (min-width: $s-medium) {
         padding: ($fs-large/2) $fs-large;
+        border: $base solid $blue;
     }
 }
 
